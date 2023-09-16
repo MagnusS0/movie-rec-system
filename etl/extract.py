@@ -9,16 +9,7 @@ import logging
 logging.basicConfig(filename='app.log', level=logging.INFO)
 
 
-# Load API key from .env file
-load_dotenv(".env")
-api_key = os.getenv('API_KEY')
-
-# Initialize connection path
-duckdb_file_path = "movies_data.duckdb"
-conn = duckdb.connect(duckdb_file_path, read_only=False)
-
-
-def extract_movies(api_key=api_key, lang='en', num_movies=100, drop=False):
+def extract_movies(api_key=None, lang='en', num_movies=100, conn=None, drop=False):
     """
     Extracts movies from TheMovieDB API and populates the DuckDB database.
 
@@ -26,6 +17,7 @@ def extract_movies(api_key=api_key, lang='en', num_movies=100, drop=False):
         api_key (str): The API key for accessing TheMovieDB.
         lang (str, optional): The language code for movie data. Defaults to 'en'.
         num_movies (int, optional): The number of movies to extract. Defaults to 100.
+        conn: The DuckDB connection object.
         drop (bool, optional): Whether to drop the existing table before insertion. Defaults to False.
 
     Returns:
@@ -35,7 +27,7 @@ def extract_movies(api_key=api_key, lang='en', num_movies=100, drop=False):
     page = 1
 
     # Drop table if drop = True
-    drop_table(drop=drop, table_name='movies')
+    drop_table(conn, drop=drop, table_name='movies')
 
     while movies < num_movies:
         # Update the URL with the new page number
@@ -63,23 +55,23 @@ def extract_movies(api_key=api_key, lang='en', num_movies=100, drop=False):
         logging.info(f"Extracted {movies} out of {num_movies} movies.")
 
         page += 1
-    conn.close()
 
 
-def extract_genre(api_key=api_key, lang='en', drop = False):
+def extract_genre(api_key=None, lang='en', drop=False, conn=None):
     """
     Extracts movie genres from TheMovieDB API and returns the data as a JSON object.
 
     Args:
         api_key (str): The API key for accessing TheMovieDB.
         lang (str, optional): The language code for genre data. Defaults to 'en'.
+        conn: The DuckDB connection object.
 
     Returns:
         dict: A JSON object containing the API response.
     """
     # Drop table if drop = True
-    drop_table(drop=drop, table_name='genres')
-    
+    drop_table(conn, drop=drop, table_name='genres')
+
     # Construct URL
     url = f"https://api.themoviedb.org/3/genre/movie/list?api_key={api_key}&with_original_language={lang}"  # noqa E501
     # Make a request
@@ -88,7 +80,7 @@ def extract_genre(api_key=api_key, lang='en', drop = False):
     except requests.exceptions.RequestException as e:
         logging.error("An error occurred during the request:", e)
         return {}
-    
+
     # Transform content to JSON
     json_data = res.json()
 
@@ -96,10 +88,11 @@ def extract_genre(api_key=api_key, lang='en', drop = False):
     init_duck_db_genres(conn, json_data, table_name='generes')
 
 
-def drop_table (conn=conn, drop=False, table_name=None):
+
+def drop_table(conn, drop=False, table_name=None):
     '''
     Drops table in DuckDB if it does exist
-    
+
     Args:
         conn: The DuckDB connection object.
         table_name (str): The name of the table to create or update.
@@ -162,7 +155,7 @@ def create_table(conn, table_name, temp_file_path):
         return
 
 
-def init_duck_db_movies(conn=conn, json_data=None, table_name='movies'):
+def init_duck_db_movies(conn, json_data=None, table_name='movies'):
     '''
     Initilizes the 'movies' table and populates it with JSON data
 
@@ -188,7 +181,7 @@ def init_duck_db_movies(conn=conn, json_data=None, table_name='movies'):
                 f"Successfully initialized and populated the table {table_name}.")
 
 
-def init_duck_db_genres(conn=conn, json_data=None, table_name='genres'):
+def init_duck_db_genres(conn, json_data=None, table_name='genres'):
     '''
     Initilizes the 'genres' table and populates it with JSON data
 
@@ -212,3 +205,31 @@ def init_duck_db_genres(conn=conn, json_data=None, table_name='genres'):
             os.remove(temp_file_path)
             logging.info(
                 f"Successfully initialized and populated the table {table_name}.")
+
+
+if __name__ == "__main__":
+    # Parameter to get 1000 English movies
+    language_count = {"en": 1000,}
+
+    # Load API key from .env file
+    load_dotenv(".env")
+    api_key = os.getenv('API_KEY')
+
+    # Initialize connection path
+    duckdb_file_path = "movies_data.duckdb"
+    try:
+        conn = duckdb.connect(duckdb_file_path, read_only=False)
+        logging.info('Connection opened')
+        
+        for key in language_count:
+        # print(key,language_count[key])
+            print("Downloading", key, end=": ")
+            movies = extract_movies(api_key, key, language_count[key],conn,drop=True)  # noqa E501
+            genres = extract_genre(api_key, key,drop=True, conn=conn)
+
+    except Exception as e:
+        logging.error(f'An error occurred: {e}')
+
+    finally:
+        conn.close()
+        logging.info('Connection closed')
