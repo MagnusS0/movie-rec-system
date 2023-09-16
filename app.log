@@ -1,0 +1,10 @@
+INFO:root:Successfully initialized and populated the table movies.
+ERROR:root:An error occurred while creating the table: Parser Error: syntax error at or near "IF"
+LINE 1: DROP IF EXISTS movies
+             ^
+INFO:root:Successfully initialized and populated the table movies.
+ERROR:root:An error occurred while creating the table: Catalog Error: Table with name movies does not exist!
+Did you mean "pg_views"?
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Successfully initialized and populated the table movies.
