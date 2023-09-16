@@ -13,31 +13,60 @@ logging.basicConfig(filename='app.log', level=logging.INFO)
 load_dotenv(".env")
 api_key = os.getenv('API_KEY')
 
+# Initialize connection path
+duckdb_file_path = "movies_data.duckdb"
+conn = duckdb.connect(duckdb_file_path, read_only=False)
 
-def extract_movies(api_key=api_key, lang='en'):
+
+def extract_movies(api_key=api_key, lang='en', num_movies=100, drop=False):
     """
-    Extracts movies from TheMovieDB API and returns the data as a JSON object.
+    Extracts movies from TheMovieDB API and populates the DuckDB database.
 
     Args:
         api_key (str): The API key for accessing TheMovieDB.
         lang (str, optional): The language code for movie data. Defaults to 'en'.
+        num_movies (int, optional): The number of movies to extract. Defaults to 100.
+        drop (bool, optional): Whether to drop the existing table before insertion. Defaults to False.
 
     Returns:
-        dict: A JSON object containing the API response.
+        None
     """
-    # Construct URL
-    url = f"https://api.themoviedb.org/3/movie/popular?api_key={api_key}&with_original_language={lang}"  # noqa E501
-    # Make a request
-    try:
-        res = requests.get(url)
-    except requests.exceptions.RequestException as e:
-        logging.error("An error occurred during the request:", e)
-        return {}
-    # Transform content to JSON
-    return res.json()
+    movies = 0
+    page = 1
+
+    # Drop table if drop = True
+    drop_table(drop=drop, table_name='movies')
+
+    while movies < num_movies:
+        # Update the URL with the new page number
+        url = f"https://api.themoviedb.org/3/movie/popular?api_key={api_key}&with_original_language={lang}&page={page}"
+
+        # Make a request
+        try:
+            res = requests.get(url)
+        except requests.exceptions.RequestException as e:
+            logging.error(f"An error occurred during the request: {e}")
+            break
+
+        if res.status_code != 200:
+            logging.error(f"Received non-200 status code: {res.status_code}")
+            break
+
+        # Transform content to JSON
+        json_data = res.json()
+
+        # Initialize or update the database
+        init_duck_db_movies(conn, json_data, table_name='movies')
+
+        # Log progress
+        movies += len(json_data.get('results', []))
+        logging.info(f"Extracted {movies} out of {num_movies} movies.")
+
+        page += 1
+    conn.close()
 
 
-def extract_genre(api_key=api_key, lang='en'):
+def extract_genre(api_key=api_key, lang='en', drop = False):
     """
     Extracts movie genres from TheMovieDB API and returns the data as a JSON object.
 
@@ -48,6 +77,9 @@ def extract_genre(api_key=api_key, lang='en'):
     Returns:
         dict: A JSON object containing the API response.
     """
+    # Drop table if drop = True
+    drop_table(drop=drop, table_name='genres')
+    
     # Construct URL
     url = f"https://api.themoviedb.org/3/genre/movie/list?api_key={api_key}&with_original_language={lang}"  # noqa E501
     # Make a request
@@ -56,13 +88,30 @@ def extract_genre(api_key=api_key, lang='en'):
     except requests.exceptions.RequestException as e:
         logging.error("An error occurred during the request:", e)
         return {}
+    
     # Transform content to JSON
-    return res.json()
+    json_data = res.json()
+
+    # Initialize or update the database
+    init_duck_db_genres(conn, json_data, table_name='generes')
 
 
-# Initialize connection path
-duckdb_file_path = "movies_data.duckdb"
-conn = duckdb.connect(duckdb_file_path, read_only=False)
+def drop_table (conn=conn, drop=False, table_name=None):
+    '''
+    Drops table in DuckDB if it does exist
+    
+    Args:
+        conn: The DuckDB connection object.
+        table_name (str): The name of the table to create or update.
+        drop (bool, optional): Whether to drop the table if it already exists. Defaults to False.
+
+    Returns:
+        None
+    '''
+    # If drop flag is True, drop the existing table
+    if drop:
+        conn.execute(f"DROP TABLE IF EXISTS {table_name}")
+        logging.info(f'Sucessfully dropped {table_name}')
 
 
 def write_json_to_temp_file(json_data):
@@ -85,7 +134,7 @@ def write_json_to_temp_file(json_data):
         return None
 
 
-def create_table(conn, table_name, temp_file_path, drop=False):
+def create_table(conn, table_name, temp_file_path):
     """
     Creates a new table in DuckDB if it does not already exist, or inserts data into an existing table.
     Optionally drops the table if it already exists.
@@ -94,17 +143,12 @@ def create_table(conn, table_name, temp_file_path, drop=False):
         conn: The DuckDB connection object.
         table_name (str): The name of the table to create or update.
         temp_file_path (str): The path to the temporary file containing the JSON data to populate the table.
-        drop (bool, optional): Whether to drop the table if it already exists. Defaults to False.
 
     Returns:
         None
     """
     # If table do NOT exists create a new one, else insert data
     try:
-
-        if drop:
-            conn.execute(f'DROP TABLE IF EXISTS {table_name}')
-
         tables = conn.execute("SHOW TABLES;").fetchall()
 
         if (f"{table_name}",) not in tables:
@@ -118,7 +162,7 @@ def create_table(conn, table_name, temp_file_path, drop=False):
         return
 
 
-def init_duck_db_movies(conn=conn, json_data=None, table_name='movies', drop=False):
+def init_duck_db_movies(conn=conn, json_data=None, table_name='movies'):
     '''
     Initilizes the 'movies' table and populates it with JSON data
 
@@ -127,14 +171,10 @@ def init_duck_db_movies(conn=conn, json_data=None, table_name='movies', drop=Fal
         json_data (dict, optional) : The JSON data to populate the table with. If None, data will be extracted
         using the extract_movies function. Defaults to None. 
         table_name (str, optional): The name of the table to initialize. Defaults to 'movies'.
-        drop (bool, optional): Whether to drop the table if it already exists. Defaults to False.
 
     Returns:
         None
     '''
-    # Extract movies data
-    if json_data is None:
-        json_data = extract_movies()
 
     # Write JSON string to a temporary file
     if json_data:
@@ -142,14 +182,13 @@ def init_duck_db_movies(conn=conn, json_data=None, table_name='movies', drop=Fal
 
         # If table do NOT exists create a new one, else insert data
         if temp_file_path:
-            create_table(conn, table_name, temp_file_path, drop)
-            conn.close()
+            create_table(conn, table_name, temp_file_path)
             os.remove(temp_file_path)
             logging.info(
                 f"Successfully initialized and populated the table {table_name}.")
 
 
-def init_duck_db_genres(conn=conn, json_data=None, table_name='genres', drop=False):
+def init_duck_db_genres(conn=conn, json_data=None, table_name='genres'):
     '''
     Initilizes the 'genres' table and populates it with JSON data
 
@@ -158,14 +197,10 @@ def init_duck_db_genres(conn=conn, json_data=None, table_name='genres', drop=Fal
         path (str, optional) : The path to the DuckDB file. Defaults to "movies_data.duckdb".
         json_data (dict, optional) : The JSON data to populate the table with. If None, data will be extracted
         table_name (str, optional): The name of the table to initialize. Defaults to 'genres'.
-        drop (bool, optional): Whether to drop the table if it already exists. Defaults to False.
 
     Returns:
         None
     '''
-    # Extract genre data
-    if json_data is None:
-        json_data = extract_genre()
 
     # Write JSON string to a temporary file
     if json_data:
@@ -173,8 +208,7 @@ def init_duck_db_genres(conn=conn, json_data=None, table_name='genres', drop=Fal
 
         # If table do NOT exists create a new one, else insert data
         if temp_file_path:
-            create_table(conn, table_name, temp_file_path, drop)
-            conn.close()
+            create_table(conn, table_name, temp_file_path)
             os.remove(temp_file_path)
             logging.info(
                 f"Successfully initialized and populated the table {table_name}.")

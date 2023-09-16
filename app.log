@@ -8,3 +8,40 @@ Did you mean "pg_views"?
 INFO:root:Successfully initialized and populated the table movies.
 INFO:root:Successfully initialized and populated the table movies.
 INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 20 out of 100 movies.
+ERROR:root:An error occurred while creating the table: Connection Error: Connection has already been closed
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 40 out of 100 movies.
+ERROR:root:An error occurred while creating the table: Connection Error: Connection has already been closed
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 60 out of 100 movies.
+ERROR:root:An error occurred while creating the table: Connection Error: Connection has already been closed
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 80 out of 100 movies.
+ERROR:root:An error occurred while creating the table: Connection Error: Connection has already been closed
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 100 out of 100 movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 20 out of 100 movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 40 out of 100 movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 60 out of 100 movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 80 out of 100 movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 100 out of 100 movies.
+INFO:root:Sucessfully dropped movies
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 20 out of 100 movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 40 out of 100 movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 60 out of 100 movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 80 out of 100 movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 100 out of 100 movies.
+INFO:root:Sucessfully dropped genres
+INFO:root:Successfully initialized and populated the table generes.
