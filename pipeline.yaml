@@ -1,0 +1,5 @@
+tasks:
+  - source: etl/extract.py
+    product:
+      nb: products/extract-pipeline.ipynb
+      data: movies_data.duckdb

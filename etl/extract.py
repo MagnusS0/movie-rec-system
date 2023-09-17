@@ -1,3 +1,9 @@
+# + tags=["parameters"]
+# declare a list tasks whose products you want to use as inputs
+upstream = None
+
+# -
+
 import requests
 from dotenv import load_dotenv
 import json
@@ -215,6 +221,8 @@ if __name__ == "__main__":
     load_dotenv(".env")
     api_key = os.getenv('API_KEY')
 
+    conn = None
+
     # Initialize connection path
     duckdb_file_path = "movies_data.duckdb"
     try:
@@ -231,5 +239,6 @@ if __name__ == "__main__":
         logging.error(f'An error occurred: {e}')
 
     finally:
-        conn.close()
-        logging.info('Connection closed')
+        if conn:
+            conn.close()
+            logging.info('Connection closed')
