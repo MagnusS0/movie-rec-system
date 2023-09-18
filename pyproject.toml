@@ -21,6 +21,11 @@ pytest = "7.4.0"
 uvicorn = "0.23.2"
 httpx = "^0.24.1"
 
+[tool.jupysql.SqlMagic]
+autopandas = true
+feedback = true
+displaycon = false
+named_parameters= true
 
 [build-system]
 requires = ["poetry-core"]

@@ -91,7 +91,7 @@ def extract_genre(api_key=None, lang='en', drop=False, conn=None):
     json_data = res.json()
 
     # Initialize or update the database
-    init_duck_db_genres(conn, json_data, table_name='generes')
+    init_duck_db_genres(conn, json_data, table_name='genres')
 
 
 
@@ -113,7 +113,7 @@ def drop_table(conn, drop=False, table_name=None):
         logging.info(f'Sucessfully dropped {table_name}')
 
 
-def write_json_to_temp_file(json_data):
+def write_json_to_temp_file(json_data, json_key):
     """
     Writes the provided JSON data to a temporary file and returns the file's name.
 
@@ -126,7 +126,8 @@ def write_json_to_temp_file(json_data):
     # Write JSON string to a temporary file
     try:
         with tempfile.NamedTemporaryFile(delete=False, mode='w') as temp_file:
-            json.dump(json_data, temp_file)
+            # Get the correct key so that only the results are written to the file
+            json.dump(json_data[f'{json_key}'], temp_file) 
             return temp_file.name
     except Exception as e:
         logging.error(f"An error occurred while writing the JSON file: {e}")
@@ -177,7 +178,7 @@ def init_duck_db_movies(conn, json_data=None, table_name='movies'):
 
     # Write JSON string to a temporary file
     if json_data:
-        temp_file_path = write_json_to_temp_file(json_data)
+        temp_file_path = write_json_to_temp_file(json_data, json_key='results')
 
         # If table do NOT exists create a new one, else insert data
         if temp_file_path:
@@ -203,7 +204,7 @@ def init_duck_db_genres(conn, json_data=None, table_name='genres'):
 
     # Write JSON string to a temporary file
     if json_data:
-        temp_file_path = write_json_to_temp_file(json_data)
+        temp_file_path = write_json_to_temp_file(json_data, json_key='genres')
 
         # If table do NOT exists create a new one, else insert data
         if temp_file_path:
