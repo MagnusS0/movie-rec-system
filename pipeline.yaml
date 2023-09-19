@@ -3,3 +3,7 @@ tasks:
     product:
       nb: products/extract-pipeline.ipynb
       data: movies_data.duckdb
+  - source: etl/eda.ipynb
+    static_analysis: disable
+    product: 
+      nb: products/eda-pipeline.ipynb
