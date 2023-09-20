@@ -677,3 +677,39 @@ INFO:root:Successfully initialized and populated the table genres.
 INFO:root:Connection closed
 ERROR:root:An error occurred: IO Error: Cannot open file "c:\users\magsa\desktop\365_data_sience\project\movie recommendation system\mini-projects\movie-rec-system\movies_data.duckdb": The process cannot access the file because it is being used by another process.
 
+INFO:root:Connection opened
+INFO:root:Data retrieved
+INFO:root:Connection closed
+INFO:root:Combined column created
+INFO:root:Data sucesfully retrieved and transformed
+INFO:root:TFID matrix sucessfully created
+INFO:root:Connection opened
+INFO:root:Data retrieved
+INFO:root:Connection closed
+INFO:root:Combined column created
+INFO:root:Data sucesfully retrieved and transformed
+INFO:root:TFID matrix sucessfully created
+INFO:root:Connection opened
+INFO:root:Data retrieved
+INFO:root:Connection closed
+INFO:root:Combined column created
+INFO:root:Data sucesfully retrieved and transformed
+INFO:root:TFID matrix sucessfully created
+INFO:root:Connection opened
+INFO:root:Data retrieved
+INFO:root:Connection closed
+INFO:root:Combined column created
+INFO:root:Data sucesfully retrieved and transformed
+INFO:root:TFID matrix sucessfully created
+INFO:root:Connection opened
+INFO:root:Data retrieved
+INFO:root:Connection closed
+INFO:root:Combined column created
+INFO:root:Data sucesfully retrieved and transformed
+INFO:root:TFID matrix sucessfully created
+INFO:root:Connection opened
+INFO:root:Data retrieved
+INFO:root:Connection closed
+INFO:root:Combined column created
+INFO:root:Data sucesfully retrieved and transformed
+INFO:root:TFID matrix sucessfully created
