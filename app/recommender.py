@@ -61,6 +61,11 @@ def get_recommendation(movie: str, num_rec: int = 10, stop_words="english"):
     }
 
     """
+    # Assertions to check input types and values
+    assert isinstance(movie, str), 'movie must be a string'
+    assert num_rec > 0, 'num_rec must be greater than 0'
+    
+
     movie = movie.lower()
     df = retrieve_and_transform_data()
 
