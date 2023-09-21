@@ -749,3 +749,108 @@ INFO:root:Connection closed
 INFO:root:Combined column created
 INFO:root:Data sucesfully retrieved and transformed
 INFO:root:TFID matrix sucessfully created
+INFO:root:Connection opened
+INFO:root:Sucessfully dropped movies
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 20 out of 1000 movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 40 out of 1000 movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 60 out of 1000 movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 80 out of 1000 movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 100 out of 1000 movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 120 out of 1000 movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 140 out of 1000 movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 160 out of 1000 movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 180 out of 1000 movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 200 out of 1000 movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 220 out of 1000 movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 240 out of 1000 movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 260 out of 1000 movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 280 out of 1000 movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 300 out of 1000 movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 320 out of 1000 movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 340 out of 1000 movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 360 out of 1000 movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 380 out of 1000 movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 400 out of 1000 movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 420 out of 1000 movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 440 out of 1000 movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 460 out of 1000 movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 480 out of 1000 movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 500 out of 1000 movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 520 out of 1000 movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 540 out of 1000 movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 560 out of 1000 movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 580 out of 1000 movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 600 out of 1000 movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 620 out of 1000 movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 640 out of 1000 movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 660 out of 1000 movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 680 out of 1000 movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 700 out of 1000 movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 720 out of 1000 movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 740 out of 1000 movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 760 out of 1000 movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 780 out of 1000 movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 800 out of 1000 movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 820 out of 1000 movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 840 out of 1000 movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 860 out of 1000 movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 880 out of 1000 movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 900 out of 1000 movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 920 out of 1000 movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 940 out of 1000 movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 960 out of 1000 movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 980 out of 1000 movies.
+INFO:root:Successfully initialized and populated the table movies.
+INFO:root:Extracted 1000 out of 1000 movies.
+INFO:root:Sucessfully dropped genres
+INFO:root:Successfully initialized and populated the table genres.
+INFO:root:Connection closed

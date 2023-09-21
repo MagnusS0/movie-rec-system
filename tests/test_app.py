@@ -1,5 +1,5 @@
 from fastapi.testclient import TestClient
-from app.app import app
+from movie_rec_system.app.app import app
 
 client = TestClient(app)
 
