@@ -1,6 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, field_validator
-from movie_rec_system.app.recommender import get_recommendation
+from .recommender import get_recommendation
 from fastapi.responses import JSONResponse
 import json
 

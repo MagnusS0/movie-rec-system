@@ -15,7 +15,7 @@ def get_data() -> pd.DataFrame:
     of FastAPI
     """
 
-    con = duckdb.connect("movie_rec_system/etl/movies_data.duckdb")
+    con = duckdb.connect("movies_data.duckdb")
     logging.info('Connection opened')
     try:
         query = "SELECT * FROM movie_genre_data"

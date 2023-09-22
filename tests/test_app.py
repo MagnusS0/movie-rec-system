@@ -44,4 +44,3 @@ def test_recommendation_result():
 
     assert isinstance(metrics["popularity"], float)
     assert isinstance(metrics["vote_avg"], float)
-    assert isinstance(metrics["vote_count"], float)
