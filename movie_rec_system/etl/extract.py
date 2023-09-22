@@ -225,7 +225,7 @@ if __name__ == "__main__":
     conn = None
 
     # Initialize connection path
-    duckdb_file_path = "movies_data.duckdb"
+    duckdb_file_path = "movie_rec_system/etl/movies_data.duckdb"
     try:
         conn = duckdb.connect(duckdb_file_path, read_only=False)
         logging.info('Connection opened')

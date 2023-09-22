@@ -4,7 +4,7 @@ import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
 
 
-from .recommenderhelper import (
+from movie_rec_system.app.recommenderhelper import (
     content_movie_recommender,
     compute_metrics,
     retrieve_and_transform_data,
