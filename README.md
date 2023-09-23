@@ -76,7 +76,7 @@ The main tables are:
 
 ## Recommendation Methodology
 
-The movie recommendation system is built using TF-IDF (Term Frequency-Inverse Document Frequency) and cosine similarity. <br>
+The movie recommendation system is built using TF-IDF (Term Frequency-Inverse Document Frequency) and cosine similarity. Essentily building a **content filtering** reccomendation system. <br>
 TF-IDF is used to convert the movie `(overviews+ (genres*2))` into numerical vectors, representing the significance of specific terms in each movie’s overview. 
 Then, cosine similarity is computed between these vectors to determine the similarity between different movies. 
 Based on this similarity score, the system recommends movies that are most similar to the given input movie title.
