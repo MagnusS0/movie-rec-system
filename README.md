@@ -43,14 +43,14 @@ The project involves the following components:
 > See the [`pyproject.toml`](pyproject.toml) file for the full list of dependencies.
 
 ## How to Run it 🛫
-<details>
+<details open>
   <summary>Click me</summary>
 
-- Clone the repository
+Clone the repository
 ```sh
 git clone https://github.com/MagnusS0/movie-rec-system.git
 ```
-- Navigate to the directory where you downloaded the repository
+Navigate to the directory where you downloaded the repository
 ``` sh
 cd movie_rec_system
 ```
