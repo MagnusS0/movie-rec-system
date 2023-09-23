@@ -28,8 +28,6 @@ jobs:
     - name: Build and push
       uses: docker/build-push-action@v5
       with:
-        context: .
-        file: Dockerfile
         push: true
         tags: magnuss0/movie-rec-system:latest
         build-args: |
