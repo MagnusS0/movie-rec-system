@@ -24,6 +24,47 @@ The project involves the following components:
 - Docker
 > See the `pyproject.toml` file for the full list of dependencies.
 
+## How to Run it
+<details>
+  <summary>Click me</summary>
+
+1. Clone the repository
+```sh
+git clone https://github.com/MagnusS0/movie-rec-system.git
+```
+2. Navigate to the directory where you downloaded the repository
+``` sh
+cd movie_rec_system
+```
+
+### Run - with Docker
+
+```sh
+docker build -t movie_rec_system:latest -f Dockerfile .
+docker run -p 8000:8000 movie_rec_system:latest
+```
+
+### Run - locally
+
+1. Make sure you have `Poetry` innstalled in your enviornment
+```sh
+pip install poetry
+```
+2. Install dependencies
+```sh
+poetry lock
+poetry install
+```
+3. Build the pipline with `Ploomber` build
+```sh
+poetry run ploomber build
+```
+4. Run the app (make sure you are in the right dir)
+```sh
+ uvicorn app.app:app
+```
+</details>
+
 ## Data
 The data is extracted from TheMovieDB API and stored in a DuckDB database movies_data.duckdb. It contains information on movies like title, overview, genres, ratings, etc.
 
@@ -74,32 +115,4 @@ Sample Output:
     "vote_count": 6699.44
   }
 }
-```
-
-## Usage
-To run the project locally:
-
-1. Clone the repository
-```
-git clone https://github.com/MagnusS0/movie-rec-system.git
-```
-2. Navigate to the directory where you downloaded the repository
-``` bash
-cd movie_rec_system
-```
-3. Make sure you have `Poetry` innstalled in your enviornment
-```
-pip install poetry
-```
-4. Install dependencies
-```
-poetry install
-```
-5. Build the pipline with `Ploomber` build
-```
-ploomber build
-```
-6. Run the app (make sure you are in the right dir)
-```
- uvicorn app.app:app
 ```
