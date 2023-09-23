@@ -118,3 +118,22 @@ Sample Output:
   }
 }
 ```
+## Credits 👏
+This project was created by [@MagnusS0](https://github.com/MagnusS0)
+
+**Guided by:**
+[Ploomber's Movie Recommendation Project](https://ploomber-sql.readthedocs.io/en/latest/mini-projects/recommendation-system/introduction.html)
+
+**Powered by:**
+
+[TheMovieDB API](https://www.themoviedb.org/)
+[Ploomber](https://ploomber.io/)
+[FastAPI](https://fastapi.tiangolo.com/)
+[DuckDB](https://duckdb.org/)
+[Poetry](https://python-poetry.org/)
+[Docker](https://www.docker.com/)
+
+## License 📄
+This project is licensed under the Apache 2.0 License - see the LICENSE file for details.
+
+I have modified the original code/structure from Ploomber's blueprint, while keeping some parts the same. Thank you to Ploomber for making their blueprint openly available!
