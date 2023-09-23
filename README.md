@@ -1,4 +1,6 @@
 # Movie Recommendation System
+![image](https://github.com/MagnusS0/movie-rec-system/assets/97634880/1d6c3e5f-c6f3-47d3-b4ec-6bb476a1dc2d)
+
 This is a Python project to build a movie recommendation system using data extracted from a movie database API. <br>
 The project follows the guided blueprint provided by [Ploomber](https://github.com/ploomber/sql/tree/main), focusing on writing professional, modular, and well-documented code with thorough docstrings and exception handling within an OOP framework.
 ## Description
