@@ -81,11 +81,11 @@ To run the project locally:
 
 1. Clone the repository
 ```
-git clone <repo-url>
+git clone https://github.com/MagnusS0/movie-rec-system.git
 ```
 2. Navigate to the directory where you downloaded the repository
 ``` bash
-cd /movie_rec_system
+cd movie_rec_system
 ```
 3. Make sure you have `Poetry` innstalled in your enviornment
 ```
