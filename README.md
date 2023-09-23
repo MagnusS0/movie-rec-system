@@ -6,27 +6,27 @@ The project follows the guided blueprint provided by [Ploomber](https://github.c
 ## Description
 The project involves the following components:
 
-- Extracting movie data by calling [TheMovieDB API](https://developer.themoviedb.org/docs/getting-started)
-- Storing the data in a DuckDB database
-- Performing exploratory data analysis with SQL in Jupyter Notebooks
-- Developing a movie recommendation system that uses TF-IDF and cosine similarity to generate reccomendations
-- Takes a movie title as input and returns similar movie recommendations
-- Packaging the notebooks and Python scripts into an end-to-end workflow using Ploomber
-- Building a FastAPI web application to serve the recommendation results via API
-- Dockerizing the application for easy deployment
+- 🎬 Extracting movie data by calling [TheMovieDB API](https://developer.themoviedb.org/docs/getting-started)
+- 💾 Storing the data in a DuckDB database 
+- 📊 Performing exploratory data analysis with SQL in Jupyter Notebooks 
+- 🤖 Developing a movie recommendation system that uses TF-IDF and cosine similarity to generate reccomendations 
+- 🎞️ Takes a movie title as input and returns similar movie recommendations 
+- ⚙️ Packaging the notebooks and Python scripts into an end-to-end workflow using Ploomber 
+- ⚡ Building a FastAPI web application to serve the recommendation results via API 
+- 🐳 Dockerizing the application for easy deployment 
 
 ## Requirements
-- Python 3.10+
-- Poetry
-- DuckDB
-- Jupyter
-- Pandas
-- Scikit-Learn
-- FastAPI
-- Docker
+- Python 3.10+ 🐍
+- Poetry 📦
+- DuckDB 🦆
+- Jupyter 💻
+- Pandas 🐼
+- Scikit-Learn 🔬
+- FastAPI ⚡️
+- Docker 🐳
 > See the `pyproject.toml` file for the full list of dependencies.
 
-## How to Run it
+## How to Run it 🛫
 <details>
   <summary>Click me</summary>
 
@@ -39,14 +39,14 @@ git clone https://github.com/MagnusS0/movie-rec-system.git
 cd movie_rec_system
 ```
 
-### Run - with Docker
+### Run - with Docker 🐳
 
 ```sh
 docker build -t movie_rec_system:latest -f Dockerfile .
 docker run -p 8000:8000 movie_rec_system:latest
 ```
 
-### Run - locally
+### Run - locally 💻
 
 1. Make sure you have `Poetry` innstalled in your enviornment
 ```sh
@@ -67,7 +67,7 @@ poetry run ploomber build
 ```
 </details>
 
-## Data
+## Data 📊
 The data is extracted from TheMovieDB API and stored in a DuckDB database movies_data.duckdb. It contains information on movies like title, overview, genres, ratings, etc.
 
 The main tables are:
@@ -76,7 +76,7 @@ The main tables are:
 - **genres** - contains genre definitions
 - **movie_genre_data** - joins movies and genres into a single table
 
-## Recommendation Methodology
+## Recommendation Methodology 🤖
 
 The movie recommendation system is built using TF-IDF (Term Frequency-Inverse Document Frequency) and cosine similarity. Essentily building a **content filtering** reccomendation system. <br>
 TF-IDF is used to convert the movie `(overviews+ (genres*2))` into numerical vectors, representing the significance of specific terms in each movie’s overview. 
