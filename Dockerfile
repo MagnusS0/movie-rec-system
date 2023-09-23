@@ -4,6 +4,12 @@ FROM python:3.10
 # Set the working directory in the container to /app
 WORKDIR /app
 
+# Use ARG to accept the API key as a build argument
+ARG API_KEY
+
+# Use ENV to set the API key as an environment variable
+ENV API_KEY=$API_KEY
+
 # Copy the poetry files
 COPY pyproject.toml poetry.lock /app/
 
@@ -13,9 +19,6 @@ RUN pip install poetry
 # Install project dependencies
 RUN poetry lock
 RUN poetry install
-
-# Copy the .env file
-COPY .env .env
 
 # Copy the rest of the project
 COPY . .
