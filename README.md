@@ -24,7 +24,7 @@ The project involves the following components:
 - Scikit-Learn 🔬
 - FastAPI ⚡️
 - Docker 🐳
-> See the `pyproject.toml` file for the full list of dependencies.
+> See the [`pyproject.toml`](pyproject.toml) file for the full list of dependencies.
 
 ## How to Run it 🛫
 <details>
@@ -126,14 +126,14 @@ This project was created by [@MagnusS0](https://github.com/MagnusS0)
 
 **Powered by:**
 
-[TheMovieDB API](https://www.themoviedb.org/)
-[Ploomber](https://ploomber.io/)
-[FastAPI](https://fastapi.tiangolo.com/)
-[DuckDB](https://duckdb.org/)
-[Poetry](https://python-poetry.org/)
-[Docker](https://www.docker.com/)
+[TheMovieDB API](https://www.themoviedb.org/) <br>
+[Ploomber](https://ploomber.io/) <br>
+[FastAPI](https://fastapi.tiangolo.com/) <br>
+[DuckDB](https://duckdb.org/) <br>
+[Poetry](https://python-poetry.org/) <br>
+[Docker](https://www.docker.com/) 
 
 ## License 📄
-This project is licensed under the Apache 2.0 License - see the LICENSE file for details.
+This project is licensed under the Apache 2.0 License - see the [LICENSE](LICENSE) file for details.
 
 I have modified the original code/structure from Ploomber's blueprint, while keeping some parts the same. Thank you to Ploomber for making their blueprint openly available!
