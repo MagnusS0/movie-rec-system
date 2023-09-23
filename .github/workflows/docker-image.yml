@@ -15,4 +15,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag movie_rec_system:$(date +%s)
+      env:
+        API_KEY: ${{ secrets.API_KEY }}
+      run: docker build . --file Dockerfile --build-arg API_KEY=$API_KEY --tag movie_rec_system:$(date +%s)
