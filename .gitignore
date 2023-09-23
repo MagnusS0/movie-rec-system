@@ -1,0 +1,24 @@
+# IDE Configurations
+.vscode/
+
+# Python Cache Files
+__pycache__/
+*.pyc
+*.pyo
+
+# Test Cache Files
+.pytest_cache/
+
+# Environment Configurations
+.env
+
+# Database Files
+*.duckdb
+*.duckdb.metadata
+
+# Log Files
+*.log
+
+# Jupyter Notebooks Checkpoints and Metadata
+*.ipynb_checkpoints/
+*.ipynb.metadata
