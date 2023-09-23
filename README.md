@@ -42,12 +42,12 @@ cd movie_rec_system
 ### Run - with Docker 🐳
 
 ```sh
-docker build -t movie_rec_system:latest -f Dockerfile .
-docker run -p 8000:8000 movie_rec_system:latest
+docker build --build-arg API_KEY=your_api_key -t movie_rec_system:latest -f Dockerfile .
+docker run -e API_KEY=your_api_key -p 8000:8000 movie_rec_system:latest
 ```
 
 ### Run - locally 💻
-
+> Remember to add your own API key to .env
 1. Make sure you have `Poetry` innstalled in your enviornment
 ```sh
 pip install poetry
