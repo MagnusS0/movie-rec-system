@@ -6,7 +6,9 @@ This is a Python project to build a movie recommendation system using data extra
 The project follows the guided blueprint provided by [Ploomber](https://github.com/ploomber/sql/tree/main), focusing on writing professional, modular, and well-documented code with thorough docstrings and exception handling within an OOP framework. <br>
 Additionally I have added a simple frontend using Streamlit. The entire application is containerized using Docker for easy setup and deployment.
 
-![image](https://github.com/MagnusS0/movie-rec-system/assets/97634880/1e0e03dd-dd9c-4d9a-bef4-b90487db242f#gh-dark-mode-only)
+![Movie reccomender example (1)](https://github.com/MagnusS0/movie-rec-system/assets/97634880/acdbc027-12b7-4618-bfbf-41f007a65e2a)
+
+
 
 
 
