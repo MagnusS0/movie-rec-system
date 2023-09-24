@@ -1,8 +1,8 @@
 import streamlit as st
-import requests  # Import requests library
+import requests 
 
 # FastAPI server URL
-SERVER_URL = "http://localhost:8000/recommendations/"  # Replace with your FastAPI server URL
+SERVER_URL = "http://backend:8000/recommendations/" # Replace with localhost if running locally
 
 st.title('Movie Recommendation System')
 
@@ -11,8 +11,8 @@ query = st.text_input('Enter a movie title:')  # Create a search bar
 num_rec = st.number_input('Number of Recommendations:', min_value=1, value=10)  # Number of recommendations
 
 # Get Recommendations Button
-if st.button('Get Recommendations'):  # If the button is pressed
-    if query:  # If a query is entered
+if st.button('Get Recommendations'):
+    if query:
         st.subheader('Recommendations for "{}":'.format(query))
         
         # Prepare payload

@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  backend:
+    build: 
+      context: . # Directory containing the backend Dockerfile and source code
+      dockerfile: Dockerfile  # Path to backend Dockerfile
+      args:
+        API_KEY: ${API_KEY} 
+    ports:
+      - "8000:8000"  # Expose the port the backend service runs on
+    env_file:
+      - .env
+
+  frontend:
+    build: 
+      context: ./frontend  # Directory the frontend Dockerfile and source code
+      dockerfile: Dockerfile  # Path to your frontend Dockerfile
+    ports:
+      - "8501:8501"  # Expose the port the frontend service runs on
