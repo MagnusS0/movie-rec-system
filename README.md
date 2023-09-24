@@ -4,6 +4,21 @@
 
 This is a Python project to build a movie recommendation system using data extracted from a movie database API. <br>
 The project follows the guided blueprint provided by [Ploomber](https://github.com/ploomber/sql/tree/main), focusing on writing professional, modular, and well-documented code with thorough docstrings and exception handling within an OOP framework.
+
+## Table of Contents
+
+- [Description](#description)
+- [Requirements](#requirements)
+- [How to Run it](#how-to-run-it-)
+    - [With Docker](#run---with-docker-)
+    - [Locally](#run---locally-)
+- [Data](#data-)
+- [Recommendation Methodology](#recommendation-methodology-)
+- [Modules](#modules)
+- [Results](#results)
+- [Credits](#credits-)
+- [License](#license-)
+
 ## Description
 The project involves the following components:
 
@@ -28,14 +43,14 @@ The project involves the following components:
 > See the [`pyproject.toml`](pyproject.toml) file for the full list of dependencies.
 
 ## How to Run it 🛫
-<details>
+<details open>
   <summary>Click me</summary>
 
-1. Clone the repository
+Clone the repository
 ```sh
 git clone https://github.com/MagnusS0/movie-rec-system.git
 ```
-2. Navigate to the directory where you downloaded the repository
+Navigate to the directory where you downloaded the repository
 ``` sh
 cd movie_rec_system
 ```
