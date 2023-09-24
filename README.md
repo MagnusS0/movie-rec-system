@@ -3,7 +3,8 @@
 
 
 This is a Python project to build a movie recommendation system using data extracted from a movie database API. <br>
-The project follows the guided blueprint provided by [Ploomber](https://github.com/ploomber/sql/tree/main), focusing on writing professional, modular, and well-documented code with thorough docstrings and exception handling within an OOP framework.
+The project follows the guided blueprint provided by [Ploomber](https://github.com/ploomber/sql/tree/main), focusing on writing professional, modular, and well-documented code with thorough docstrings and exception handling within an OOP framework. <br>
+Additionally I have added a simple frontend using Streamlit. The entire application is containerized using Docker for easy setup and deployment.
 
 ## Table of Contents
 
@@ -56,10 +57,9 @@ cd movie_rec_system
 ```
 
 ### Run - with Docker 🐳
-
+> Remember to add your own API key to .env
 ```sh
-docker build --build-arg API_KEY=your_api_key -t movie_rec_system:latest -f Dockerfile .
-docker run -e API_KEY=your_api_key -p 8000:8000 movie_rec_system:latest
+docker-compose up --build
 ```
 
 ### Run - locally 💻
@@ -77,9 +77,14 @@ poetry install
 ```sh
 poetry run ploomber build
 ```
-4. Run the app (make sure you are in the right dir)
+4. Run the app
 ```sh
  uvicorn app.app:app
+```
+5. Run the frontend (optional)
+> Make sure you are in the right dir `frontend`
+```sh
+streamlit run frontend_app.py
 ```
 </details>
 
@@ -100,6 +105,7 @@ Then, cosine similarity is computed between these vectors to determine the simil
 Based on this similarity score, the system recommends movies that are most similar to the given input movie title.
 
 ## Modules
+- `frontend/frontend_app.py` contains the Streamlit application code
 - `app/app.py` - contains the FastAPI application code
 - `app/recommender.py` - generates movie recommendations
 - `app/recommenderhelper.py` - contains helper functions for the recommender
