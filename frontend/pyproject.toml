@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "movie-rec-system-frontend"
+version = "0.1.0"
+description = "Frontend for Movie Recommendation System"
+authors = ["Magnus <97634880+MagnusS0@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+streamlit = "^1.25.0"
+requests = "^2.31"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "movie-rec-system"
 version = "0.1.0"
-description = ""
+description = "Backend for Movie Recommendation System"
 authors = ["Magnus <97634880+MagnusS0@users.noreply.github.com>"]
 readme = "README.md"
 
@@ -21,7 +21,6 @@ pytest = "7.4.0"
 uvicorn = "0.23.2"
 httpx = "^0.24.1"
 seaborn = "^0.12.2"
-streamlit = "^1.25.0"
 
 [tool.jupysql.SqlMagic]
 autopandas = true
